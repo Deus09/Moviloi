@@ -19,7 +19,13 @@ const TopHeaderBar: React.FC<TopHeaderBarProps> = ({
   isProfilePage = false,
   onBackClick
 }) => (
-  <div className="flex flex-row items-center justify-between bg-background w-full h-[80px] p-4 relative safe-area-top">
+  <div 
+    className="flex flex-row items-center justify-between bg-background w-full p-4 pb-2 relative header-safe-area"
+    style={{
+      paddingTop: 'max(env(safe-area-inset-top) + 44px, 60px)',
+      minHeight: 'max(calc(80px + env(safe-area-inset-top)), 120px)'
+    }}
+  >
     <div className="absolute bottom-0 left-0 w-full h-[1px] bg-[#f8f8ff]"></div>
     <div className="flex flex-row items-center gap-2 flex-1">
       {showBackButton && (

@@ -1,6 +1,7 @@
 import { Redirect, Route } from 'react-router-dom';
 import { useEffect, lazy, Suspense, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { StatusBar, Style } from '@capacitor/status-bar';
 import {
   IonApp,
   setupIonicReact,
@@ -39,6 +40,7 @@ import { useGlobalErrorHandler } from './hooks/useGlobalErrorHandler';
 import GlobalErrorBoundary from './components/errors/GlobalErrorBoundary';
 import SplashScreen from './components/SplashScreen';
 import AuthGuard from './components/AuthGuard';
+import DeviceUtils from './utils/deviceUtils';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -235,6 +237,28 @@ const App: React.FC = () => {
   });
 
   useEffect(() => {
+    // Device detection ve safe area classes uygula
+    DeviceUtils.applySafeAreaClasses();
+    
+    // iOS için zorlayıcı safe area uygula
+    DeviceUtils.forceIOSSafeArea();
+    
+    // iOS Status Bar configuration
+    const configureStatusBar = async () => {
+      if (DeviceUtils.isIOS()) {
+        try {
+          await StatusBar.setStyle({ style: Style.Dark });
+          await StatusBar.setBackgroundColor({ color: '#000000' });
+          await StatusBar.setOverlaysWebView({ overlay: false });
+          console.log('✅ iOS Status Bar configured');
+        } catch (error) {
+          console.warn('⚠️ Status Bar configuration failed:', error);
+        }
+      }
+    };
+    
+    configureStatusBar();
+    
     // Dark mode theme system initialization - Her zaman dark tema
     const preferences = LocalStorageService.getUserPreferences();
     

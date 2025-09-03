@@ -12,6 +12,9 @@ html, body {
   --ion-safe-area-bottom: env(safe-area-inset-bottom);
   --ion-safe-area-left: env(safe-area-inset-left);
   --ion-safe-area-right: env(safe-area-inset-right);
+  
+  /* iPhone Pro serisinde çentik için ekstra padding */
+  --ios-header-padding: 44px;
 }
 
 /* Safe area utility classes */
@@ -31,10 +34,10 @@ html, body {
   padding-right: var(--ion-safe-area-right);
 }
 
-/* iOS specific styles */
+/* iOS specific styles with stronger safe area support */
 @supports (padding: max(0px)) {
   .safe-area-top {
-    padding-top: max(var(--ion-safe-area-top), 20px);
+    padding-top: max(var(--ion-safe-area-top), 54px);
   }
   
   .safe-area-bottom {
@@ -42,9 +45,39 @@ html, body {
   }
 }
 
+/* Enhanced iOS safe area for headers - çentik için zorlayıcı kurallar */
+.header-safe-area {
+  padding-top: calc(var(--ion-safe-area-top) + var(--ios-header-padding));
+  margin-top: var(--ion-safe-area-top);
+  min-height: calc(80px + var(--ion-safe-area-top));
+}
+
+/* iOS cihazlar için specific kurallar */
+@supports (-webkit-appearance: none) {
+  .header-safe-area {
+    padding-top: calc(env(safe-area-inset-top) + 54px) !important;
+    min-height: calc(100px + env(safe-area-inset-top)) !important;
+  }
+}
+
 /* iOS status bar height adjustment */
-.ios .safe-area-top {
-  padding-top: calc(var(--ion-safe-area-top) + 20px);
+.ios .safe-area-top,
+.ios-device .safe-area-top {
+  padding-top: calc(var(--ion-safe-area-top) + 54px);
+}
+
+.ios .header-safe-area,
+.ios-device .header-safe-area {
+  padding-top: calc(var(--ion-safe-area-top) + 54px) !important;
+  min-height: calc(100px + var(--ion-safe-area-top)) !important;
+}
+
+/* iPhone Pro serisi için özel kurallar */
+@media screen and (-webkit-min-device-pixel-ratio: 3) {
+  .ios-device .header-safe-area {
+    padding-top: calc(env(safe-area-inset-top) + 59px) !important;
+    min-height: calc(120px + env(safe-area-inset-top)) !important;
+  }
 }
 
 /* BottomNavBar specific adjustments */
