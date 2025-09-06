@@ -6,12 +6,26 @@ html, body {
   background: hsl(var(--background)) !important;
 }
 
+/* iOS Status Bar için arka plan ve görünürlük */
+html {
+  /* Status bar alanının görünür olması için */
+  padding-top: env(safe-area-inset-top) !important;
+  background: hsl(var(--background)) !important;
+}
+
+body {
+  /* Body'nin çentik alanına girememesi için */
+  padding-top: 0 !important;
+  background: hsl(var(--background)) !important;
+}
+
 /* iOS çentik arka plan rengi uyumluluğu */
 .ios-device {
   background-color: hsl(var(--background)) !important;
 }
 
-/* Status bar alanı için arka plan */
+/* Status bar alanı için arka plan - çentikteki yazıların görünmesi için kaldırılıyor */
+/* Bu kod status bar yazılarının görünmesini engelliyor, yoruma alındı
 @supports (padding: env(safe-area-inset-top)) {
   .ios-device::before {
     content: '';
@@ -24,6 +38,7 @@ html, body {
     z-index: 9999;
   }
 }
+*/
 
 /* iOS Safe Area Support - iPhone çentiği için güçlendirilmiş */
 :root {
@@ -36,6 +51,30 @@ html, body {
   --ios-header-padding: 44px;
   --ios-status-bar-height: 44px;
   --ios-pro-header-padding: 59px;
+}
+
+/* iOS Status Bar Styling - çentikteki yazıların görünmesi için */
+@supports (-webkit-backdrop-filter: blur(10px)) {
+  html {
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  /* Status bar alanı için şeffaf arka plan */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: env(safe-area-inset-top);
+    background: linear-gradient(180deg, 
+      hsl(var(--background)) 0%, 
+      hsla(var(--background), 0.95) 50%,
+      hsla(var(--background), 0.8) 100%);
+    z-index: -1;
+    pointer-events: none;
+  }
 }
 
 /* Safe area utility classes */

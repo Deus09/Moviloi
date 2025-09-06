@@ -245,7 +245,7 @@ const App: React.FC = () => {
       if (DeviceUtils.isIOS()) {
         try {
           await StatusBar.setStyle({ style: Style.Light });
-          await StatusBar.setBackgroundColor({ color: '#0a0a0a' });
+          await StatusBar.setBackgroundColor({ color: '#171717' });
           await StatusBar.setOverlaysWebView({ overlay: false });
           console.log('✅ iOS Status Bar configured');
         } catch (error) {
