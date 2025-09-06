@@ -66,20 +66,19 @@ export const DeviceUtils = {
       const style = document.createElement('style');
       style.innerHTML = `
         .header-safe-area {
-          padding-top: calc(env(safe-area-inset-top) + 54px) !important;
-          min-height: calc(100px + env(safe-area-inset-top)) !important;
-        }
-        
-        @media screen and (device-width: 393px) and (device-height: 852px) {
-          /* iPhone 14/15 Pro için optimize */
-          .header-safe-area {
-            padding-top: calc(env(safe-area-inset-top) + 54px) !important;
-            min-height: calc(110px + env(safe-area-inset-top)) !important;
-          }
+          /*
+            ÇÖZÜM:
+            1. Header'ın üst padding'ini SADECE çentik boşluğu (safe-area-inset-top) kadar yap.
+            2. Header içeriğinin kendi padding'i veya yüksekliği olacak.
+            3. min-height'i sabit bir değere ayarlayarak çift boşluk sorununu çöz.
+          */
+          padding-top: env(safe-area-inset-top) !important;
+          min-height: 95px !important; /* Header'ın toplam yüksekliği (içerik + boşluk) */
+          box-sizing: content-box !important;
         }
       `;
       document.head.appendChild(style);
-      console.log('✅ iOS safe area force styles applied');
+      console.log('✅ iOS safe area force styles applied (v2)');
     }
   }
 };
