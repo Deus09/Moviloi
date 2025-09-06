@@ -240,9 +240,6 @@ const App: React.FC = () => {
     // Device detection ve safe area classes uygula
     DeviceUtils.applySafeAreaClasses();
     
-    // iOS için zorlayıcı safe area uygula
-    DeviceUtils.forceIOSSafeArea();
-    
     // iOS Status Bar configuration
     const configureStatusBar = async () => {
       if (DeviceUtils.isIOS()) {

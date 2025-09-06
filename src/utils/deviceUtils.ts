@@ -57,33 +57,6 @@ export const DeviceUtils = {
       document.documentElement.classList.add('android-device');
     }
   },
-
-  /**
-   * iOS için zorlayıcı safe area style'ları uygula
-   */
-  forceIOSSafeArea: (): void => {
-    if (DeviceUtils.isIOS()) {
-      const style = document.createElement('style');
-      style.innerHTML = `
-        .header-safe-area {
-          /*
-            ÇÖZÜM V4:
-            1. Header'ın üst padding'ini SADECE çentik boşluğu (safe-area-inset-top) kadar yap.
-            2. min-height'i daha makul bir değere düşürerek (95px -> 75px) boşluğu azalt.
-          */
-          padding-top: env(safe-area-inset-top) !important;
-          min-height: 75px !important; /* Header'ın içeriğinin yüksekliğine daha yakın bir değer */
-          box-sizing: content-box !important;
-
-          /* --- TEŞHİS AMAÇLI --- */
-          background-color: green !important; 
-          /* --- Eğer bu yeşil renk görünürse, en son değişiklikler uygulanmış demektir. --- */
-        }
-      `;
-      document.head.appendChild(style);
-      console.log('✅ iOS safe area force styles applied (v4 - with debug color)');
-    }
-  }
 };
 
 export default DeviceUtils;
