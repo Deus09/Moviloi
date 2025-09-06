@@ -6,6 +6,25 @@ html, body {
   background: hsl(var(--background)) !important;
 }
 
+/* iOS çentik arka plan rengi uyumluluğu */
+.ios-device {
+  background-color: hsl(var(--background)) !important;
+}
+
+/* Status bar alanı için arka plan */
+@supports (padding: env(safe-area-inset-top)) {
+  .ios-device::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: env(safe-area-inset-top);
+    background-color: hsl(var(--background));
+    z-index: 9999;
+  }
+}
+
 /* iOS Safe Area Support - iPhone çentiği için güçlendirilmiş */
 :root {
   --ion-safe-area-top: env(safe-area-inset-top);
@@ -52,8 +71,8 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 8px 10px;
-  padding-bottom: calc(8px + var(--ion-safe-area-bottom, 0px));
+  padding: 12px 10px;
+  padding-bottom: calc(12px + var(--ion-safe-area-bottom, 0px));
 }
 
 .bottom-nav-bar button {
@@ -61,9 +80,9 @@ html, body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 49px;
-  padding-top: 4px;
-  padding-bottom: 4px;
+  min-height: 52px;
+  padding-top: 6px;
+  padding-bottom: 6px;
 }
 
 /* Custom animations */
@@ -138,7 +157,7 @@ html, body {
 
 /* iPhone çentik için FİNAL optimize kuralları */
 .ios-header-safe-area {
-  /* Sadece çentik boşluğu + minimum header padding */
-  padding-top: calc(env(safe-area-inset-top) + 20px) !important;
-  min-height: 80px !important;
+  /* Sadece çentik boşluğu + minimum header padding (20px -> 10px) */
+  padding-top: calc(env(safe-area-inset-top) + 10px) !important;
+  min-height: 75px !important;
 } 
