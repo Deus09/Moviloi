@@ -80,9 +80,9 @@ html, body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 52px;
-  padding-top: 6px;
-  padding-bottom: 6px;
+  min-height: 40px;
+  padding-top: 4px;
+  padding-bottom: 4px;
 }
 
 /* Custom animations */
