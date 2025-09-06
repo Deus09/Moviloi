@@ -7,7 +7,12 @@ const config: CapacitorConfig = {
   ios: {
     contentInset: 'automatic',
     scrollEnabled: true,
-    backgroundColor: '#000000'
+    backgroundColor: '#000000',
+    // iPhone çentiği için ek ayarlar
+    safeArea: true,
+    statusBarOverlaysWebView: false,
+    statusBarStyle: 'dark',
+    statusBarBackgroundColor: '#000000'
   },
   server: {
     iosScheme: 'https'
@@ -22,7 +27,10 @@ const config: CapacitorConfig = {
     StatusBar: {
       style: 'dark',
       backgroundColor: '#000000',
-      overlaysWebView: false
+      overlaysWebView: false,
+      // iPhone çentiği için ek ayarlar
+      safeArea: true,
+      statusBarOverlaysWebView: false
     }
   }
 };

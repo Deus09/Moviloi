@@ -49,5 +49,12 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
+	<!-- iPhone çentiği için ek ayarlar -->
+	<key>UIStatusBarOverridesContent</key>
+	<false/>
+	<key>UIStatusBarHidden~ipad</key>
+	<false/>
+	<key>UIStatusBarStyle~ipad</key>
+	<string>UIStatusBarStyleDarkContent</string>
 </dict>
 </plist>

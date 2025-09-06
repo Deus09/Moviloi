@@ -6,7 +6,7 @@ html, body {
   background: hsl(var(--background)) !important;
 }
 
-/* iOS Safe Area Support */
+/* iOS Safe Area Support - iPhone çentiği için güçlendirilmiş */
 :root {
   --ion-safe-area-top: env(safe-area-inset-top);
   --ion-safe-area-bottom: env(safe-area-inset-bottom);
@@ -15,6 +15,8 @@ html, body {
   
   /* iPhone Pro serisinde çentik için ekstra padding */
   --ios-header-padding: 44px;
+  --ios-status-bar-height: 44px;
+  --ios-pro-header-padding: 59px;
 }
 
 /* Safe area utility classes */
@@ -52,11 +54,31 @@ html, body {
   min-height: calc(80px + var(--ion-safe-area-top));
 }
 
+/* YENİ: iPhone çentiği için özel header safe area class'ı */
+.ios-header-safe-area {
+  /* Temel safe area + status bar height */
+  padding-top: max(calc(env(safe-area-inset-top) + var(--ios-status-bar-height)), 88px);
+  margin-top: env(safe-area-inset-top);
+  min-height: max(calc(120px + env(safe-area-inset-top)), 160px);
+  
+  /* iPhone Pro serisi için ekstra padding */
+  @supports (-webkit-appearance: none) {
+    padding-top: max(calc(env(safe-area-inset-top) + var(--ios-pro-header-padding)), 103px);
+    min-height: max(calc(140px + env(safe-area-inset-top)), 180px);
+  }
+
+}
+
 /* iOS cihazlar için specific kurallar */
 @supports (-webkit-appearance: none) {
   .header-safe-area {
     padding-top: calc(env(safe-area-inset-top) + 54px) !important;
     min-height: calc(100px + env(safe-area-inset-top)) !important;
+  }
+  
+  .ios-header-safe-area {
+    padding-top: calc(env(safe-area-inset-top) + 59px) !important;
+    min-height: calc(140px + env(safe-area-inset-top)) !important;
   }
 }
 
@@ -77,6 +99,11 @@ html, body {
   .ios-device .header-safe-area {
     padding-top: calc(env(safe-area-inset-top) + 59px) !important;
     min-height: calc(120px + env(safe-area-inset-top)) !important;
+  }
+  
+  .ios-header-safe-area {
+    padding-top: calc(env(safe-area-inset-top) + 59px) !important;
+    min-height: calc(140px + env(safe-area-inset-top)) !important;
   }
 }
 
@@ -167,4 +194,94 @@ html, body {
 .filter-modal ion-toolbar {
   --background: transparent;
   --color: #F8F8FF;
+}
+
+/* iPhone çentiği için ek güvenlik kuralları */
+/* iOS 15+ için viewport-fit=cover desteği */
+@supports (padding: max(0px)) {
+  .ios-header-safe-area {
+    /* iPhone Pro serisi için minimum güvenli padding */
+    padding-top: max(
+      calc(env(safe-area-inset-top) + 59px),
+      103px
+    ) !important;
+    
+    /* iPhone mini ve SE için minimum padding */
+    @media screen and (max-device-width: 375px) {
+      padding-top: max(
+        calc(env(safe-area-inset-top) + 44px),
+        88px
+      ) !important;
+    }
+    
+    /* iPhone Pro Max için ekstra padding */
+    @media screen and (min-device-width: 428px) {
+      padding-top: max(
+        calc(env(safe-area-inset-top) + 59px),
+        103px
+      ) !important;
+    }
+  }
+}
+
+/* iOS cihazlar için ekstra güvenlik */
+@media screen and (-webkit-appearance: none) and (max-device-width: 428px) {
+  .ios-header-safe-area {
+    padding-top: max(
+      calc(env(safe-area-inset-top) + 59px),
+      103px
+    ) !important;
+    min-height: max(
+      calc(140px + env(safe-area-inset-top)),
+      180px
+    ) !important;
+  }
+}
+
+/* iPhone çentiği için maksimum güvenlik kuralları */
+.ios-header-safe-area {
+  /* iPhone Pro serisi için maksimum padding */
+  padding-top: 250px !important;
+  min-height: 330px !important;
+}
+
+/* Normal iPhone için */
+@media screen and (max-device-width: 428px) {
+  .ios-header-safe-area {
+    padding-top: 230px !important;
+    min-height: 310px !important;
+  }
+}
+
+/* iPhone mini ve SE için */
+@media screen and (max-device-width: 375px) {
+  .ios-header-safe-area {
+    padding-top: 220px !important;
+    min-height: 300px !important;
+  }
+}
+
+/* iPhone Pro Max için ekstra güvenlik */
+@media screen and (min-device-width: 428px) {
+  .ios-header-safe-area {
+    padding-top: 260px !important;
+    min-height: 340px !important;
+  }
+}
+
+/* iOS cihazlar için zorlayıcı kurallar */
+@supports (-webkit-appearance: none) {
+  .ios-header-safe-area {
+    padding-top: 250px !important;
+    min-height: 330px !important;
+  }
+}
+
+/* iPhone 14 Pro, 15 Pro için özel kurallar */
+@media screen and (device-width: 393px) and (device-height: 852px),
+       screen and (device-width: 430px) and (device-height: 932px) {
+  .ios-header-safe-area {
+    padding-top: 260px !important;
+    min-height: 340px !important;
+  }
 } 

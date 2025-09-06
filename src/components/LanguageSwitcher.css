@@ -1,4 +1,9 @@
 /* LanguageSwitcher Accordion Styles */
+.language-switcher-accordion {
+  width: 100%;
+  max-width: 200px;
+}
+
 .language-switcher-accordion ion-accordion-group {
   background: transparent !important;
   border: none !important;
@@ -17,23 +22,26 @@
   --border-width: 0 !important;
   --padding-start: 12px !important;
   --padding-end: 12px !important;
-  --min-height: 36px !important;
+  --min-height: 40px !important;
   margin: 0 !important;
 }
 
 .language-switcher-accordion .header-item {
   background: #333 !important;
   border-radius: 8px !important;
-  transition: background-color 0.2s ease !important;
+  transition: all 0.2s ease !important;
+  border: 1px solid #444 !important;
 }
 
 .language-switcher-accordion .header-item:hover {
   background: #444 !important;
+  border-color: #FE7743 !important;
 }
 
 .language-switcher-accordion .content-item {
   background: transparent !important;
-  transition: background-color 0.2s ease !important;
+  transition: all 0.2s ease !important;
+  border: none !important;
 }
 
 .language-switcher-accordion .content-item:hover {
@@ -42,6 +50,11 @@
 
 .language-switcher-accordion .content-item.active {
   background: #FE7743 !important;
+  color: white !important;
+}
+
+.language-switcher-accordion .content-item.active ion-label {
+  color: white !important;
 }
 
 .language-switcher-accordion .content-container {
@@ -49,7 +62,29 @@
   border-radius: 8px !important;
   margin-top: 4px !important;
   overflow: hidden !important;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+  border: 1px solid #444 !important;
+}
+
+/* Accordion açılma animasyonu */
+.language-switcher-accordion ion-accordion[aria-expanded="true"] .header-item {
+  background: #444 !important;
+  border-color: #FE7743 !important;
+}
+
+/* IonLabel stilleri */
+.language-switcher-accordion ion-label {
+  color: white !important;
+  font-family: 'Poppins', sans-serif !important;
+}
+
+/* Chevron ikonu animasyonu */
+.language-switcher-accordion ion-icon {
+  transition: transform 0.2s ease !important;
+}
+
+.language-switcher-accordion ion-accordion[aria-expanded="true"] ion-icon {
+  transform: rotate(180deg) !important;
 }
 
 /* Minimal Language Switcher Styles - COMPLETELY REWRITTEN */
@@ -150,6 +185,62 @@
 .language-switcher-minimal .dropdown-item.active {
   background: rgba(0, 0, 0, 0.1) !important;
   font-weight: 600 !important;
+}
+
+/* Modern Dropdown Language Switcher Styles */
+.language-switcher-dropdown {
+  position: relative;
+  font-family: 'Poppins', sans-serif;
+}
+
+.language-switcher-dropdown .dropdown-trigger-button {
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+  font-family: inherit;
+}
+
+.language-switcher-dropdown .dropdown-trigger-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(254, 119, 67, 0.3);
+}
+
+.language-switcher-dropdown .dropdown-trigger-button .chevron-icon {
+  transition: transform 0.2s ease;
+}
+
+.language-switcher-dropdown .dropdown-menu {
+  min-width: 160px;
+  max-width: 200px;
+  animation: dropdownFadeIn 0.2s ease-out;
+  backdrop-filter: blur(8px);
+}
+
+.language-switcher-dropdown .dropdown-option {
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+  font-family: inherit;
+}
+
+.language-switcher-dropdown .dropdown-option:focus {
+  outline: none;
+  background-color: #444 !important;
+}
+
+.language-switcher-dropdown .dropdown-option:first-child {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.language-switcher-dropdown .dropdown-option:last-child {
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.language-switcher-dropdown .dropdown-option svg {
+  opacity: 0.8;
 }
 
 /* Dropdown animasyonu */

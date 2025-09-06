@@ -14,6 +14,10 @@ PODS:
     - Capacitor
   - CapacitorStatusBar (7.0.1):
     - Capacitor
+  - Sentry/HybridSDK (8.53.2)
+  - SentryCapacitor (2.2.0):
+    - Capacitor
+    - Sentry/HybridSDK (= 8.53.2)
 
 DEPENDENCIES:
   - "Capacitor (from `../../node_modules/@capacitor/ios`)"
@@ -24,6 +28,11 @@ DEPENDENCIES:
   - "CapacitorNetwork (from `../../node_modules/@capacitor/network`)"
   - "CapacitorPushNotifications (from `../../node_modules/@capacitor/push-notifications`)"
   - "CapacitorStatusBar (from `../../node_modules/@capacitor/status-bar`)"
+  - "SentryCapacitor (from `../../node_modules/@sentry/capacitor`)"
+
+SPEC REPOS:
+  trunk:
+    - Sentry
 
 EXTERNAL SOURCES:
   Capacitor:
@@ -42,6 +51,8 @@ EXTERNAL SOURCES:
     :path: "../../node_modules/@capacitor/push-notifications"
   CapacitorStatusBar:
     :path: "../../node_modules/@capacitor/status-bar"
+  SentryCapacitor:
+    :path: "../../node_modules/@sentry/capacitor"
 
 SPEC CHECKSUMS:
   Capacitor: 9d9e481b79ffaeacaf7a85d6a11adec32bd33b59
@@ -52,7 +63,9 @@ SPEC CHECKSUMS:
   CapacitorNetwork: 695069886b3c5ed514db69aa3d026b8dc3c03a6b
   CapacitorPushNotifications: 7c0659b349b149ee3936a682da31a9d269de9582
   CapacitorStatusBar: 6e7af040d8fc4dd655999819625cae9c2d74c36f
+  Sentry: 59993bffde4a1ac297ba6d268dc4bbce068d7c1b
+  SentryCapacitor: 6fe947b9713d3a3b2c022aa7d1b399821b585d78
 
-PODFILE CHECKSUM: 7b8c6fedb707eefd17a10c65d52d7b8151d48383
+PODFILE CHECKSUM: 106cb363b56ad9f413c1f9c5560282b6c7f03979
 
 COCOAPODS: 1.16.2
