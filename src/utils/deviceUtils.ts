@@ -71,10 +71,10 @@ export const DeviceUtils = {
         }
         
         @media screen and (device-width: 393px) and (device-height: 852px) {
-          /* iPhone 16 Pro özel */
+          /* iPhone 14/15 Pro için optimize */
           .header-safe-area {
-            padding-top: calc(env(safe-area-inset-top) + 59px) !important;
-            min-height: calc(120px + env(safe-area-inset-top)) !important;
+            padding-top: calc(env(safe-area-inset-top) + 54px) !important;
+            min-height: calc(110px + env(safe-area-inset-top)) !important;
           }
         }
       `;
