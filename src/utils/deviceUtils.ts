@@ -75,10 +75,14 @@ export const DeviceUtils = {
           padding-top: env(safe-area-inset-top) !important;
           min-height: 95px !important; /* Header'ın toplam yüksekliği (içerik + boşluk) */
           box-sizing: content-box !important;
+
+          /* --- TEŞHİS AMAÇLI --- */
+          background-color: red !important; 
+          /* --- Eğer bu kırmızılık görünmüyorsa, build/sync adımlarında sorun var demektir. --- */
         }
       `;
       document.head.appendChild(style);
-      console.log('✅ iOS safe area force styles applied (v2)');
+      console.log('✅ iOS safe area force styles applied (v3 - with debug color)');
     }
   }
 };
