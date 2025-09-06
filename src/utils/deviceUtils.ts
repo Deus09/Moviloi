@@ -67,22 +67,21 @@ export const DeviceUtils = {
       style.innerHTML = `
         .header-safe-area {
           /*
-            ÇÖZÜM:
+            ÇÖZÜM V4:
             1. Header'ın üst padding'ini SADECE çentik boşluğu (safe-area-inset-top) kadar yap.
-            2. Header içeriğinin kendi padding'i veya yüksekliği olacak.
-            3. min-height'i sabit bir değere ayarlayarak çift boşluk sorununu çöz.
+            2. min-height'i daha makul bir değere düşürerek (95px -> 75px) boşluğu azalt.
           */
           padding-top: env(safe-area-inset-top) !important;
-          min-height: 95px !important; /* Header'ın toplam yüksekliği (içerik + boşluk) */
+          min-height: 75px !important; /* Header'ın içeriğinin yüksekliğine daha yakın bir değer */
           box-sizing: content-box !important;
 
           /* --- TEŞHİS AMAÇLI --- */
-          background-color: red !important; 
-          /* --- Eğer bu kırmızılık görünmüyorsa, build/sync adımlarında sorun var demektir. --- */
+          background-color: green !important; 
+          /* --- Eğer bu yeşil renk görünürse, en son değişiklikler uygulanmış demektir. --- */
         }
       `;
       document.head.appendChild(style);
-      console.log('✅ iOS safe area force styles applied (v3 - with debug color)');
+      console.log('✅ iOS safe area force styles applied (v4 - with debug color)');
     }
   }
 };
